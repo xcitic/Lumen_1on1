@@ -16,10 +16,10 @@ $router->get('/', function () use ($router) {
 });
 
 
-$app->group(['prefix' => 'api/v1'], function() use ($app){
-  $app->get('/posts', 'PostController@index');
-  $app->get('/post', 'PostController@create');
-  $app->get('/post/{id}', 'PostController@show');
-  $app->put('/post/{id}', 'PostController@update');
-  $app->delete('/post/{id}', 'PostController@destroy');
+$router->group(['prefix' => 'api/v1'], function() use ($router){
+  $router->get('/posts', 'PostController@index');
+  $router->get('/post', 'PostController@create');
+  $router->get('/post/{id}', 'PostController@show');
+  $router->put('/post/{id}', 'PostController@update');
+  $router->delete('/post/{id}', 'PostController@destroy');
 });
