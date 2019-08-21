@@ -4,7 +4,7 @@ namespace App;
 
 
 class Post {
-  
+
   protected $table = 'products';
 
   protected $fillable = [
