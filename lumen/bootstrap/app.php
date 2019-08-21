@@ -21,9 +21,15 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
+
+// Eloquent
 $app->withFacades();
 
 $app->withEloquent();
+
+// Passport Auth
+$app->configure('auth');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -61,9 +67,11 @@ $app->singleton(
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+
+    'client' => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +83,10 @@ $app->singleton(
 | totally optional, so you are not required to uncomment this line.
 |
 */
+
+
+$app->register(Laravel\Passport\PassportServiceProvider::class);
+$app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);

@@ -23,4 +23,26 @@ $router->group(['prefix'=>'api/v1'], function() use ($router){
   $router->get('/post/{id}', 'PostController@show');
   $router->put('/post/{id}', 'PostController@update');
   $router->delete('/post/{id}', 'PostController@destroy');
+  $router->group(['middleware' => 'client'], function () use ($router) {
+
+
+    $router->post('/login', 'AuthController@login');
+    $router->post('/register', 'AuthController@register');
+
+    $router->group(['middleware' => 'auth:api'], function() use ($router) {
+      $router->get('/user', function (Request $request) {
+      return $request->user();
+      });
+    });
+
+
+  });
 });
+
+//
+// Route::group(['middleware' => ['auth:api', 'json_response']], function() {
+// // Test Route to get current user session
+// Route::get('/user', function (Request $request) {
+// return $request->user();
+// });
+// });
