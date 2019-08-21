@@ -14,3 +14,12 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+
+$app->group(['prefix' => 'api/v1'], function() use ($app){
+  $app->get('/posts', 'PostController@index');
+  $app->get('/post', 'PostController@create');
+  $app->get('/post/{id}', 'PostController@show');
+  $app->put('/post/{id}', 'PostController@update');
+  $app->delete('/post/{id}', 'PostController@destroy');
+});
