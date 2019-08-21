@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
-class ProductController extends Controller
+class PostController extends Controller
 {
 
 
@@ -68,7 +69,7 @@ class ProductController extends Controller
   /**
    * Delete a Post
    * @param  int    $id
-   * @return String  
+   * @return String
    */
   public function destroy(int $id) {
     $post = Post::find($id);

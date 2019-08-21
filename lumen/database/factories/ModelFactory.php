@@ -11,9 +11,17 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->name,
-        'email' => $faker->email,
-    ];
+// $factory->define(App\User::class, function (Faker\Generator $faker) {
+//     return [
+//         'name' => $faker->name,
+//         'email' => $faker->email,
+//     ];
+// });
+//
+
+$factory->define(App\Post::class, function (Faker\Generator $faker) {
+  return [
+    'title' => $faker->title,
+    'content' => $faker->paragraph(5)
+  ];
 });

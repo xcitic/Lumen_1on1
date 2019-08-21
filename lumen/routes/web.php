@@ -16,7 +16,8 @@ $router->get('/', function () use ($router) {
 });
 
 
-$router->group(['prefix' => 'api/v1'], function() use ($router){
+
+$router->group(['prefix'=>'api/v1'], function() use ($router){
   $router->get('/posts', 'PostController@index');
   $router->get('/post', 'PostController@create');
   $router->get('/post/{id}', 'PostController@show');
