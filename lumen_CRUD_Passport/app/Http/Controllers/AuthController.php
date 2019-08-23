@@ -64,7 +64,7 @@ class AuthController extends Controller
       {
         // Generate token with passport
         $token = $user->createToken('bearer')->accessToken;
-      
+
         $response = [
           'user' => $user,
           'token' => $token
@@ -75,6 +75,12 @@ class AuthController extends Controller
 
     return response(['errors' => 'Wrong email or password'], 422);
 
+  }
+
+  public function getUser() {
+    $user = User::all();
+
+    return response()->json($user);
   }
 
 
